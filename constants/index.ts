@@ -87,3 +87,45 @@ export const accordionData = [
       "Nos interventions sont réalisées par des spécialistes qualifiés utilisant des matériaux de premier choix. Nous nous engageons à terminer vos travaux dans les meilleurs délais tout en garantissant la meilleure qualité.",
   },
 ];
+export const clientsData = [
+  {
+    description:
+      "Safeway Engineering m'a aidée à obtenir la Prime Énergie et MaPrimeRénov' pour l'isolation de ma maison. Grâce à leurs conseils et à leur accompagnement, j'ai pu réaliser des économies d'énergie significatives. Le processus a été fluide et sans stress. Je recommande vivement leur service pour tout projet de rénovation énergétique !",
+    image: "/images/client/01.jpg",
+    name: "Marie D.",
+    role: "Manager",
+    stars: 5,
+  },
+  {
+    description:
+      "Je suis très satisfait des services de Safeway Engineering. Ils ont pris en charge toutes les démarches pour obtenir les aides CEE et MaPrimeRénov' pour mon projet de rénovation énergétique. Leur équipe est très professionnelle et toujours disponible pour répondre à mes questions. Grâce à eux, j'ai pu optimiser mes économies d'énergie. Merci Safeway !",
+    image: "/images/client/02.jpg",
+    name: "Julien P.",
+    role: "Manager",
+    stars: 4,
+  },
+  {
+    description:
+      "Excellente expérience avec Safeway Engineering ! Ils m'ont accompagné de A à Z pour bénéficier de la Prime Énergie et des aides MaPrimeRénov'. Leurs solutions personnalisées m'ont permis de réaliser des économies importantes sur mes factures d'énergie. Je suis très reconnaissante pour leur aide précieuse et leur expertise.",
+    image: "/images/client/03.jpg",
+    name: "Claire T.",
+    role: "Manager",
+    stars: 5,
+  },
+  {
+    description:
+      "Safeway Engineering a été un partenaire exceptionnel pour notre projet de rénovation énergétique. Ils ont géré toutes les démarches pour obtenir les primes et les aides, ce qui nous a grandement simplifié la vie. Leur équipe est compétente et réactive. Grâce à eux, nous avons pu réduire nos dépenses énergétiques de manière significative.",
+    image: "/images/client/04.jpg",
+    name: "Marc L.",
+    role: "Manager",
+    stars: 3,
+  },
+  {
+    description:
+      "Je recommande vivement Safeway Engineering pour toute aide en matière d'énergie. Ils m'ont aidée à calculer mes aides et à obtenir la Prime Énergie et MaPrimeRénov' pour mon projet de rénovation. Leur accompagnement a été exemplaire et les résultats sont au-delà de mes attentes. Je suis ravie des économies d'énergie réalisées grâce à leur expertise.",
+    image: "/images/client/05.jpg",
+    name: "Sophie R.",
+    role: "Manager",
+    stars: 4,
+  },
+];
