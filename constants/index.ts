@@ -129,3 +129,10 @@ export const clientsData = [
     stars: 4,
   },
 ];
+
+export const menuItems = [
+  { href: "/", label: "Accueil" },
+  { href: "/calculer-mes-aides", label: "Simulation" },
+  { href: "/nos-offres", label: "Nos Offres" },
+  { href: "/contactez-nous", label: "Contactez-nous" },
+];
