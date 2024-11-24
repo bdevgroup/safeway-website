@@ -136,3 +136,39 @@ export const menuItems = [
   { href: "/nos-offres", label: "Nos Offres" },
   { href: "/contactez-nous", label: "Contactez-nous" },
 ];
+
+export const footerLinks = [
+  {
+    liClass: "mt-[10px]",
+    route: "/",
+    title: "Conditions de services",
+  },
+  {
+    liClass: "mt-[10px]",
+    route: "/",
+    title: "Politique de confidentialité",
+  },
+];
+export const footerCompany = [
+  {
+    liClass: "mt-[10px]",
+    route: "/",
+    title: "À propos de nous",
+  },
+  {
+    liClass: "mt-[10px]",
+    route: "/",
+    title: "Prestations de service",
+  },
+  {
+    route: "/",
+    title: "Équipe",
+    liClass: "mt-[10px]",
+  },
+  {
+    route: "/",
+    title: "Prix",
+    liClass: "mt-[10px]",
+  },
+  ...footerLinks,
+];
