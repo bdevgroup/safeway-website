@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { useState, useCallback } from "react";
 import { BiCheckDouble } from "react-icons/bi";
 import { BsMailbox } from "react-icons/bs";
+import BottomStickyBanner from "./BottomStickyBanner";
 
 const NewsletterForm = ({
   onSubmit,
@@ -162,6 +163,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      <BottomStickyBanner />
     </footer>
   );
 };
