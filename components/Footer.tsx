@@ -115,13 +115,14 @@ const Footer = () => {
                     études techniques et les travaux de rénovation.
                   </p>
                 </div>
-
+                <div className="lg:col-span-4 md:col-span-12"></div>
                 <div className="lg:col-span-3 md:col-span-4">
                   <h5 className="tracking-[1px] text-gray-100 font-semibold">
                     Newsletter
                   </h5>
                   <p className="mt-6">
-                    Inscrivez-vous pour recevoir les derniers conseils par e-mail.
+                    Inscrivez-vous pour recevoir les derniers conseils par
+                    e-mail.
                   </p>
                   <NewsletterForm
                     onSubmit={handleSubmitNewsletter}
