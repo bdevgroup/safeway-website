@@ -14,18 +14,17 @@ import { Checkbox, Input } from "@nextui-org/react";
 
 import { leadService } from "../../services/leadService";
 const SimulationForm = ({ onDataChange }) => {
-  const [selectedColor, setSelectedColor] = useState("success");
+//   const [selectedColor, setSelectedColor] = useState("success");
   const [descriptifTravaux, setDescriptifTravaux] = useState("");
 
-  const [loading, setLoading] = useState(false);
+//   const [loading, setLoading] = useState(false);
   const [isParrainageSelected, setIsParrainageSelected] = useState(false);
   const [loadingDetail, setLoadingDetail] = useState(false);
   const [showCalculeResultat, setShowCalculeResultat] = useState(false);
   const [calculeResultat, setCalculeResultat] = useState(null);
   const [insertedLeadID, setInsertedLeadID] = useState(null);
-  const [showConfirmationMsg, setShowConfirmationMsg] = useState(false);
-  const [showConfirmationMsgDetail, setShowConfirmationMsgDetail] =
-    useState(false);
+//   const [showConfirmationMsg, setShowConfirmationMsg] = useState(false);
+//   const [showConfirmationMsgDetail, setShowConfirmationMsgDetail] = useState(false);
   const [eligible, setEligible] = useState(false);
   const [typeRessources, setTypeRessources] = useState("");
   const [nom, setNom] = useState("");

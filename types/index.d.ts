@@ -13,3 +13,36 @@ declare interface newsletterFormProps {
   loading: boolean;
   showConfirmationMsg: boolean;
 }
+
+declare interface lead {
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+  address: string;
+  postalCode: string;
+  city: string;
+  country: string;
+  ProjectCode: string;
+  additionalData?: { additionalData };
+  created_by: number;
+  updated_by: number;
+}
+
+declare interface accordionData {
+  IsParrainageSelected?: boolean;
+  TelephoneParrain?: string;
+  TypeDeBien?: string;
+  anneDeContruction?: number;
+  typeDeChauffage?: string;
+  delai?: string;
+  superficie?: string;
+  revenue?: string;
+  nbrePerson?: number;
+  dpe?: string;
+  TypeDeBienAutre?: string;
+  DescriptifTravaux?: string;
+  dateRDV?: string;
+  typeRappel?: string;
+  LeadType?: string;
+}
