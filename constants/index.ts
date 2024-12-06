@@ -132,9 +132,9 @@ export const clientsData = [
 
 export const menuItems = [
   { href: "/", label: "Accueil" },
-  { href: "/calculer-mes-aides", label: "Simulation" },
-  { href: "/nos-offres", label: "Nos Offres" },
-  { href: "/contactez-nous", label: "Contactez-nous" },
+  { href: "/simulation", label: "Simulation" },
+  { href: "/offres", label: "Nos Offres" },
+  { href: "/contact", label: "Contactez-nous" },
 ];
 
 export const footerLinks = [
@@ -171,4 +171,170 @@ export const footerCompany = [
     liClass: "mt-[10px]",
   },
   ...footerLinks,
+];
+
+export const typeDeBienList = [
+  {
+    icon: "/images/renovation/005-house.png",
+    value: "Maison",
+  },
+  {
+    icon: "/images/renovation/003-office-building.png",
+    value: "Appartement",
+  },
+  {
+    icon: "/images/renovation/004-building-1.png",
+    value: "Immeuble / Copropriété",
+  },
+  {
+    icon: "/images/renovation/002-resort.png",
+    value: "Hotel",
+  },
+  {
+    icon: "/images/renovation/001-building.png",
+    value: "Gites",
+  },
+  {
+    icon: "/images/renovation/working.png",
+    value: "Copropriété",
+  },
+];
+export const chauffageList = [
+  {
+    type: "Raccordement à un réseau de chaleur et/ou de froid",
+    primeRenovTresModeste: 1200,
+    primeRenovModeste: 800,
+    primeRenovInter: 400,
+    primeRenovSupper: "non éligible",
+    depensePrevionnelle: 1800,
+  },
+  {
+    type: "Chauffe-eau thermodynamique",
+    primeRenovTresModeste: 1200,
+    primeRenovModeste: 800,
+    primeRenovInter: 400,
+    primeRenovSupper: "non éligible",
+    depensePrevionnelle: 3500,
+  },
+  {
+    type: "Pompe à chaleur air/eau (dont PAC hybrides)",
+    primeRenovTresModeste: 5000,
+    primeRenovModeste: 4000,
+    primeRenovInter: 3000,
+    primeRenovSupper: "non éligible",
+    depensePrevionnelle: 12000,
+  },
+  {
+    type: "Pompe à chaleur géothermique ou solarothermique (dont PAC hybrides)",
+    primeRenovTresModeste: 11000,
+    primeRenovModeste: 9000,
+    primeRenovInter: 6000,
+    primeRenovSupper: "non éligible",
+    depensePrevionnelle: 18000,
+  },
+  {
+    type: "Chauffe-eau solaire individuel en Métropole (et dispositifs solaires pour le chauffage de l’eau)",
+    primeRenovTresModeste: 4000,
+    primeRenovModeste: 3000,
+    primeRenovInter: 2000,
+    primeRenovSupper: "non éligible",
+    depensePrevionnelle: 7000,
+  },
+  {
+    type: "Système solaire combiné (et dispositifs solaires pour le chauffage des locaux)",
+    primeRenovTresModeste: 10000,
+    primeRenovModeste: 8000,
+    primeRenovInter: 4000,
+    primeRenovSupper: "non éligible",
+    depensePrevionnelle: 16000,
+  },
+  {
+    type: "Partie thermique d’un équipement PVT eau (système hybride photovoltaïque et thermique)",
+    primeRenovTresModeste: 2500,
+    primeRenovModeste: 2000,
+    primeRenovInter: 1000,
+    primeRenovSupper: "non éligible",
+    depensePrevionnelle: 4000,
+  },
+  {
+    type: "Poêle à bûches et cuisinière à bûches",
+    // primeRenovTresModeste: 2500,
+    primeRenovTresModeste: 1800,
+    // primeRenovModeste: 2000,
+    primeRenovModeste: 1500,
+    // primeRenovInter: 1000,
+    primeRenovInter: 700,
+    primeRenovSupper: "non éligible",
+    depensePrevionnelle: 4000,
+  },
+  {
+    type: "Poêle à granulés et cuisinière à granulés",
+    // primeRenovTresModeste: 2500,
+    primeRenovTresModeste: 1800,
+    // primeRenovModeste: 2000,
+    primeRenovModeste: 1500,
+    // primeRenovInter: 1500,
+    primeRenovInter: 1000,
+    primeRenovSupper: "non éligible",
+    depensePrevionnelle: 5000,
+  },
+  {
+    type: "Chaudière bois à alimentation manuelle (bûches)",
+    // primeRenovTresModeste: 8000,
+    primeRenovTresModeste: 5500,
+    // primeRenovModeste: 6500,
+    primeRenovModeste: 4500,
+    // primeRenovInter: 3000,
+    primeRenovInter: 2000,
+    primeRenovSupper: "non éligible",
+    depensePrevionnelle: 16000,
+  },
+  {
+    type: "Chaudière bois à alimentation automatique (granulés, plaquettes)",
+    // primeRenovTresModeste: 10000,
+    primeRenovTresModeste: 7000,
+    // primeRenovModeste: 8000,
+    primeRenovModeste: 5500,
+    // primeRenovInter: 4000,
+    primeRenovInter: 3000,
+    primeRenovSupper: "non éligible",
+    depensePrevionnelle: 18000,
+  },
+  {
+    type: "Foyer fermé et insert à bûches ou à granulés",
+    // primeRenovTresModeste: 2500,
+    primeRenovTresModeste: 1800,
+    // primeRenovModeste: 1500,
+    primeRenovModeste: 1000,
+    // primeRenovInter: 800,
+    primeRenovInter: 600,
+    primeRenovSupper: "non éligible",
+    depensePrevionnelle: 4000,
+  },
+];
+export const AUTRESTRAVAUXList = [
+  {
+    type: "Audit énergétique hors obligation réglementaire (conditionné à la réalisation d’un geste de travaux)",
+    primeRenovTresModeste: 500,
+    primeRenovModeste: 400,
+    primeRenovInter: 300,
+    primeRenovSupper: "non éligible",
+    depensePrevionnelle: 800,
+  },
+  {
+    type: "Dépose de cuve à fioul",
+    primeRenovTresModeste: 1200,
+    primeRenovModeste: 800,
+    primeRenovInter: 400,
+    primeRenovSupper: "non éligible",
+    depensePrevionnelle: 4000,
+  },
+  {
+    type: "Ventilation double flux",
+    primeRenovTresModeste: 2500,
+    primeRenovModeste: 2000,
+    primeRenovInter: 1500,
+    primeRenovSupper: "non éligible",
+    depensePrevionnelle: 6000,
+  },
 ];

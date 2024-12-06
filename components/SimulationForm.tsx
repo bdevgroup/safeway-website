@@ -9,22 +9,27 @@ import React, {
 import ReactToPrint, { useReactToPrint } from "react-to-print";
 import Image from "next/image";
 import { Oval } from "react-loader-spinner";
-import { DevisCalculeResultatV3 } from "./devisCalculeResultatV3";
+
 import { Checkbox, Input } from "@nextui-org/react";
 
-import { leadService } from "../../services/leadService";
-const SimulationForm = ({ onDataChange }) => {
-//   const [selectedColor, setSelectedColor] = useState("success");
+import { DevisCalculeResultat } from "./DevisCalculeResultat";
+import { AUTRESTRAVAUXList, chauffageList } from "@/constants";
+const SimulationForm = ({
+  onDataChange,
+}: {
+  onDataChange: (status: boolean) => void;
+}) => {
+  //   const [selectedColor, setSelectedColor] = useState("success");
   const [descriptifTravaux, setDescriptifTravaux] = useState("");
 
-//   const [loading, setLoading] = useState(false);
+  //   const [loading, setLoading] = useState(false);
   const [isParrainageSelected, setIsParrainageSelected] = useState(false);
   const [loadingDetail, setLoadingDetail] = useState(false);
   const [showCalculeResultat, setShowCalculeResultat] = useState(false);
-  const [calculeResultat, setCalculeResultat] = useState(null);
+  const [calculeResultat, setCalculeResultat] = useState({});
   const [insertedLeadID, setInsertedLeadID] = useState(null);
-//   const [showConfirmationMsg, setShowConfirmationMsg] = useState(false);
-//   const [showConfirmationMsgDetail, setShowConfirmationMsgDetail] = useState(false);
+  //   const [showConfirmationMsg, setShowConfirmationMsg] = useState(false);
+  //   const [showConfirmationMsgDetail, setShowConfirmationMsgDetail] = useState(false);
   const [eligible, setEligible] = useState(false);
   const [typeRessources, setTypeRessources] = useState("");
   const [nom, setNom] = useState("");
@@ -52,181 +57,17 @@ const SimulationForm = ({ onDataChange }) => {
   const [nbrePerson5Plus, setNbrePerson5Plus] = useState(false);
   const [nbrePerson, setNbrePerson] = useState("");
   const [dpe, setDpe] = useState("");
-  const [revenueList, setRevenueList] = useState([]);
-  const [typeTime, setTypeTime] = useState("");
-  const [calendarDate, onCalendarChange] = useState("");
-  const [typeDeBienList, setTypeDeBienList] = useState([
-    {
-      icon: "/images/renovation/005-house.png",
-      value: "Maison",
-    },
-    {
-      icon: "/images/renovation/003-office-building.png",
-      value: "Appartement",
-    },
-    {
-      icon: "/images/renovation/004-building-1.png",
-      value: "Immeuble / Copropriété",
-    },
-    {
-      icon: "/images/renovation/002-resort.png",
-      value: "Hotel",
-    },
-    {
-      icon: "/images/renovation/001-building.png",
-      value: "Gites",
-    },
-    {
-      icon: "/images/renovation/working.png",
-      value: "Copropriété",
-    },
-  ]);
-  const [chauffageList, setChauffageList] = useState([
-    {
-      type: "Raccordement à un réseau de chaleur et/ou de froid",
-      primeRenovTresModeste: 1200,
-      primeRenovModeste: 800,
-      primeRenovInter: 400,
-      primeRenovSupper: "non éligible",
-      depensePrevionnelle: 1800,
-    },
-    {
-      type: "Chauffe-eau thermodynamique",
-      primeRenovTresModeste: 1200,
-      primeRenovModeste: 800,
-      primeRenovInter: 400,
-      primeRenovSupper: "non éligible",
-      depensePrevionnelle: 3500,
-    },
-    {
-      type: "Pompe à chaleur air/eau (dont PAC hybrides)",
-      primeRenovTresModeste: 5000,
-      primeRenovModeste: 4000,
-      primeRenovInter: 3000,
-      primeRenovSupper: "non éligible",
-      depensePrevionnelle: 12000,
-    },
-    {
-      type: "Pompe à chaleur géothermique ou solarothermique (dont PAC hybrides)",
-      primeRenovTresModeste: 11000,
-      primeRenovModeste: 9000,
-      primeRenovInter: 6000,
-      primeRenovSupper: "non éligible",
-      depensePrevionnelle: 18000,
-    },
-    {
-      type: "Chauffe-eau solaire individuel en Métropole (et dispositifs solaires pour le chauffage de l’eau)",
-      primeRenovTresModeste: 4000,
-      primeRenovModeste: 3000,
-      primeRenovInter: 2000,
-      primeRenovSupper: "non éligible",
-      depensePrevionnelle: 7000,
-    },
-    {
-      type: "Système solaire combiné (et dispositifs solaires pour le chauffage des locaux)",
-      primeRenovTresModeste: 10000,
-      primeRenovModeste: 8000,
-      primeRenovInter: 4000,
-      primeRenovSupper: "non éligible",
-      depensePrevionnelle: 16000,
-    },
-    {
-      type: "Partie thermique d’un équipement PVT eau (système hybride photovoltaïque et thermique)",
-      primeRenovTresModeste: 2500,
-      primeRenovModeste: 2000,
-      primeRenovInter: 1000,
-      primeRenovSupper: "non éligible",
-      depensePrevionnelle: 4000,
-    },
-    {
-      type: "Poêle à bûches et cuisinière à bûches",
-      // primeRenovTresModeste: 2500,
-      primeRenovTresModeste: 1800,
-      // primeRenovModeste: 2000,
-      primeRenovModeste: 1500,
-      // primeRenovInter: 1000,
-      primeRenovInter: 700,
-      primeRenovSupper: "non éligible",
-      depensePrevionnelle: 4000,
-    },
-    {
-      type: "Poêle à granulés et cuisinière à granulés",
-      // primeRenovTresModeste: 2500,
-      primeRenovTresModeste: 1800,
-      // primeRenovModeste: 2000,
-      primeRenovModeste: 1500,
-      // primeRenovInter: 1500,
-      primeRenovInter: 1000,
-      primeRenovSupper: "non éligible",
-      depensePrevionnelle: 5000,
-    },
-    {
-      type: "Chaudière bois à alimentation manuelle (bûches)",
-      // primeRenovTresModeste: 8000,
-      primeRenovTresModeste: 5500,
-      // primeRenovModeste: 6500,
-      primeRenovModeste: 4500,
-      // primeRenovInter: 3000,
-      primeRenovInter: 2000,
-      primeRenovSupper: "non éligible",
-      depensePrevionnelle: 16000,
-    },
-    {
-      type: "Chaudière bois à alimentation automatique (granulés, plaquettes)",
-      // primeRenovTresModeste: 10000,
-      primeRenovTresModeste: 7000,
-      // primeRenovModeste: 8000,
-      primeRenovModeste: 5500,
-      // primeRenovInter: 4000,
-      primeRenovInter: 3000,
-      primeRenovSupper: "non éligible",
-      depensePrevionnelle: 18000,
-    },
-    {
-      type: "Foyer fermé et insert à bûches ou à granulés",
-      // primeRenovTresModeste: 2500,
-      primeRenovTresModeste: 1800,
-      // primeRenovModeste: 1500,
-      primeRenovModeste: 1000,
-      // primeRenovInter: 800,
-      primeRenovInter: 600,
-      primeRenovSupper: "non éligible",
-      depensePrevionnelle: 4000,
-    },
-  ]);
-  const [AUTRESTRAVAUXList, setAUTRESTRAVAUXList] = useState([
-    {
-      type: "Audit énergétique hors obligation réglementaire (conditionné à la réalisation d’un geste de travaux)",
-      primeRenovTresModeste: 500,
-      primeRenovModeste: 400,
-      primeRenovInter: 300,
-      primeRenovSupper: "non éligible",
-      depensePrevionnelle: 800,
-    },
-    {
-      type: "Dépose de cuve à fioul",
-      primeRenovTresModeste: 1200,
-      primeRenovModeste: 800,
-      primeRenovInter: 400,
-      primeRenovSupper: "non éligible",
-      depensePrevionnelle: 4000,
-    },
-    {
-      type: "Ventilation double flux",
-      primeRenovTresModeste: 2500,
-      primeRenovModeste: 2000,
-      primeRenovInter: 1500,
-      primeRenovSupper: "non éligible",
-      depensePrevionnelle: 6000,
-    },
-  ]);
+  const [revenueList, setRevenueList] = useState<Revenue[]>([]);
+  const [typeTime] = useState("");
+  const [calendarDate] = useState("");
+
   const componentRef = useRef(null);
   const onBeforeGetContentResolve = useRef(null);
   const [loadingPrint, setLoadingPrint] = useState(false);
 
   // Validation d'email
   const isInvalid = useMemo(() => {
-    const validateEmail = (email) =>
+    const validateEmail = (email: string) =>
       email.match(/^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i);
     if (email === "") return false;
 
@@ -234,7 +75,7 @@ const SimulationForm = ({ onDataChange }) => {
   }, [email]);
   const isInvalidPhone = useMemo(() => {
     const regexTelephoneFrancais = /^(?:\+33|0)[1-9](?:[\s.-]?\d{2}){4}$/i;
-    const validatePhone = (telephone) =>
+    const validatePhone = (telephone: string) =>
       telephone.match(regexTelephoneFrancais);
     if (telephone === "") return false;
 
@@ -242,7 +83,7 @@ const SimulationForm = ({ onDataChange }) => {
   }, [telephone]);
   const isInvalidPhoneParrain = useMemo(() => {
     const regexTelephoneFrancais = /^(?:\+33|0)[1-9](?:[\s.-]?\d{2}){4}$/i;
-    const validatePhone = (telephone) =>
+    const validatePhone = (telephone: string) =>
       telephone.match(regexTelephoneFrancais);
     if (telephoneParrain === "") return false;
 
@@ -257,7 +98,7 @@ const SimulationForm = ({ onDataChange }) => {
     // console.log("`onBeforePrint` called");
   }, []);
   const handleOnBeforeGetContent = useCallback(() => {
-    // console.log("`onBeforeGetContent` called");
+  console.log("`onBeforeGetContent` called");
     setLoadingPrint(true);
     setText("Loading new text...");
 
@@ -288,7 +129,7 @@ const SimulationForm = ({ onDataChange }) => {
       // console.log("n'est pas éligible pour l'aide");
       setEligible(false);
     }
-    let revenueIndex = revenueList.findIndex((r) => r.value === revenue);
+    const revenueIndex = revenueList.findIndex((r) => r.value === revenue);
     if (revenueIndex === 0) {
       setTypeRessources("TRÈS MODESTES");
       // console.log("TRÈS MODESTES");
@@ -314,8 +155,6 @@ const SimulationForm = ({ onDataChange }) => {
     );
   }, [
     typeRessources,
-    chauffageList,
-    AUTRESTRAVAUXList,
     eligible,
     revenueList,
     anneDeContruction,
@@ -398,7 +237,7 @@ const SimulationForm = ({ onDataChange }) => {
         break;
       default:
     }
-    nbrePerson;
+    // nbrePerson;
   }, [typeDeBien, typeDeChauffage, nbrePerson, text]);
 
   const reactToPrintContent = useCallback(() => {
@@ -460,20 +299,43 @@ const SimulationForm = ({ onDataChange }) => {
       leadType: "detail",
     };
     try {
-      const res = await leadService.createLead(lead);
+      const res = await fetch("/api/lead/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(lead),
+      });
       // console.log("res", res);
-      setInsertedLeadID(res.id);
-      handleCalculeDevis();
-      setLoadingDetail(false);
-      if (process.env.NEXT_PUBLIC_ENV === "prod") {
-        gtag("event", "conversion", {
-          send_to: process.env.NEXT_PUBLIC_CONVERSION,
-          value: 1.0,
-          currency: "EUR",
-          event_callback: () => {
-            console.log("Conversion suivie avec succès.");
-          },
-        });
+      if (res.ok) {
+        const result = res.json();
+        // console.log("Form submitted successfully");
+        // setShowConfirmationMsg(true);
+        setNom("");
+        setPrenom("");
+        setTelephone("");
+        setEmail("");
+        setTypeDeBien("");
+        setTypeDeChauffage("");
+        setDelai("");
+        setSuperficie("");
+        setRevenue("");
+        setNbrePerson("");
+        setDpe("");
+        setInsertedLeadID(result.id);
+        handleCalculeDevis();
+        setLoadingDetail(false);
+        if (process.env.NEXT_PUBLIC_ENV === "prod") {
+          // gtag("event", "conversion", {
+          //   send_to: process.env.NEXT_PUBLIC_CONVERSION,
+          //   value: 1.0,
+          //   currency: "EUR",
+          //   event_callback: () => {
+          //     console.log("Conversion suivie avec succès.");
+          //   },
+          // });
+        }
+        // setLoading(false);
       }
     } catch (error) {
       console.error("Error submitting form:", error);
@@ -521,7 +383,7 @@ const SimulationForm = ({ onDataChange }) => {
         )}
 
         {showCalculeResultat ? (
-          <DevisCalculeResultatV3 ref={componentRef} data={calculeResultat} />
+          <DevisCalculeResultat ref={componentRef} data={calculeResultat} />
         ) : (
           ""
         )}

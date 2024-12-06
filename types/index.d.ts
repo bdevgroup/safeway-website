@@ -46,3 +46,8 @@ declare interface accordionData {
   typeRappel?: string;
   LeadType?: string;
 }
+
+declare interface Revenue {
+  label: string;
+  value: string;
+}
